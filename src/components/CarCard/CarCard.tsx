@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { useCatalogStore } from '../../store/useCarsStore';
 import { Car } from '../../types/car';
 
@@ -9,8 +10,14 @@ type CarCardProps = {
 
 export const CarCard = ({ car }: CarCardProps) => {
   const { favorites, toggleFavorite } = useCatalogStore();
-
   const isFavorite = favorites.includes(car.id);
+  const [loading, setLoading] = useState(false);
+
+  const handleReadMore = () => {
+    setLoading(true);
+    // невелика затримка для ефекту (імітація завантаження)
+    setTimeout(() => setLoading(false), 800);
+  };
 
   return (
     <li key={car.id} className="flex flex-col bg-white overflow-hidden transition-transform">
@@ -51,7 +58,10 @@ export const CarCard = ({ car }: CarCardProps) => {
           </div>
 
           <div className="flex flex-wrap text-xs font-normal font-family leading-snug text-gray gap-x-1.5">
-            <span>Kyiv</span>|<span>Ukraine</span>|<span>Adventure Car Rentals</span>
+            <span>
+              {car.address ? car.address.split(',').slice(1).join(' |').trim() : 'Unknown location'}
+            </span>
+            |<span>{car.rentalCompany}</span>
           </div>
 
           <div className="flex flex-wrap text-xs font-normal font-family leading-snug text-gray gap-x-1.5 mt-1 mb-8">
@@ -61,9 +71,10 @@ export const CarCard = ({ car }: CarCardProps) => {
 
         <Link
           href={`/catalog/${car.id}`}
-          className="cursor-pointer text-base leading-tight w-full bg-button hover:bg-button-hover text-white font-medium py-3 rounded-xl transition-colors"
+          onClick={handleReadMore}
+          className="cursor-pointer flex items-center justify-center gap-2 text-base leading-tight w-full bg-button hover:bg-button-hover text-white font-medium py-3 rounded-xl transition-colors"
         >
-          Read more
+          {loading ? 'Loading...' : 'Read more'}
         </Link>
       </div>
     </li>
