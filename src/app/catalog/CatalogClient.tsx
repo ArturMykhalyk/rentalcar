@@ -20,6 +20,10 @@ export default function CatalogClient() {
         const total = Number(lastPage.totalPages);
         return current < total ? current + 1 : undefined;
       },
+      staleTime: Infinity,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
     });
 
   if (isLoading) return <p>Loading cars...</p>;

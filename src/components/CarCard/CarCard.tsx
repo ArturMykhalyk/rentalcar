@@ -41,7 +41,6 @@ export const CarCard = ({ car }: CarCardProps) => {
         </button>
       </div>
 
-      {/* Info */}
       <div className="flex flex-col justify-between flex-1">
         <div>
           <div className="flex justify-between items-center mb-2">

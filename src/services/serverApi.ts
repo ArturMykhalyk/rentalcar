@@ -1,4 +1,4 @@
-import { CarsQueryParams, CarsResponse } from '../types/car';
+import { Car, CarsQueryParams, CarsResponse } from '../types/car';
 import { api } from './api';
 
 export const getCars = async (params?: CarsQueryParams): Promise<CarsResponse> => {
@@ -7,3 +7,8 @@ export const getCars = async (params?: CarsQueryParams): Promise<CarsResponse> =
   });
   return data;
 };
+
+export async function getCarById(id: string): Promise<Car> {
+  const res = await api.get(`/cars/${id}`);
+  return res.data;
+}
