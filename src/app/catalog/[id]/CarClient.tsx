@@ -36,7 +36,8 @@ export default function CarClient({ id }: { id: string }) {
 
       <div className="flex-1 flex flex-col justify-end text-left">
         <h2 className="text-2xl leading-tight font-semibold mb-2">
-          {car.brand} {car.model}, {car.year}
+          {car.brand} {car.model}, {car.year}{' '}
+          <span className="text-gray text-base leading-tight">Id: {car.id.slice(-4)}</span>
         </h2>
         <div className="flex items-center mb-4">
           <svg width={16} height={16} className="fill-main ">

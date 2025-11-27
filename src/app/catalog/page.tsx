@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Catalog | RentalCar',
     description: 'Browse all available cars for rent. Filter by brand, price, and mileage.',
-    url: 'https://yourdomain.com/catalog',
+    url: 'https://rentalcar-fawn.vercel.app/catalog',
   },
 };
 

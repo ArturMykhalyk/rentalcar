@@ -67,7 +67,9 @@ export default function CustomSelect<T>({
             aria-label="Clear selection"
             className="ml-2 text-main text-lg font-semibold hover:text-gray-600 transition-colors cursor-pointer select-none"
           >
-            ×
+            <svg className="w-2 h-2">
+              <use href="/sprite.svg#icon-close"></use>
+            </svg>
           </span>
         ) : (
           <span className={`transition-transform duration-150 ${open ? 'rotate-180' : 'rotate-0'}`}>
